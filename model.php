@@ -138,4 +138,83 @@ public function delete_absen($id)
 	$this->conn->query($sql);
 }
 
+ // tabel kontrak
+
+ public function insert_kontrak ($mk_id, $nama) 
+{
+ $sql = "INSERT INTO kontrak_mk (mk_id, nama) VALUES
+('$mk_id', '$nama')";
+$this->conn->query($sql);
+}
+
+public function tampil_data_kontrak()
+{
+ $sql = "SELECT * FROM kontrak_mk";
+ $bind = $this->conn->query($sql);
+ while  ($obj = $bind->fetch_object()) {
+ $baris[] = $obj;
+ }
+ if(!empty($baris)){
+ return $baris;
+ }
+}
+public function edit_data_kontrak($id)
+{
+ $sql = "SELECT * FROM kontrak_mk WHERE nim='$id'";
+ $bind = $this->conn->query($sql);
+ while ($obj = $bind->fetch_object()) {
+ $baris = $obj;
+ }
+ return $baris;
+}
+public function update_data_kontrak($mk_id, $nama)
+{
+ $sql = "UPDATE kontrak_mk SET mk_id='$mk_id', nama='$nama'
+WHERE nim='$nim'";
+ $this->conn->query($sql);
+} 
+public function delete_data_kontrak($nim)
+{
+ $sql = "DELETE FROM kontrak_mk WHERE nim='$nim'";
+ $this->conn->query($sql);
+}
+// tabel mata kuliah
+public function insert_data_mata_kuliah($nim, $nama_mk)
+{
+ $sql = "INSERT INTO tbl_mk (nim, nama_mk) VALUES
+('$mk_id', '$nama')";
+$this->conn->query($sql);
+}
+
+public function tampil_data_mata_kuliah()
+{
+ $sql = "SELECT * FROM tbl_mk";
+ $bind = $this->conn->query($sql);
+ while  ($obj = $bind->fetch_object()) {
+ $baris[] = $obj;
+ }
+ if(!empty($baris)){
+ return $baris;
+ }
+}
+public function edit_data_mata_kuliah($id)
+{
+ $sql = "SELECT * FROM tbl_mk WHERE nim='$id'";
+ $bind = $this->conn->query($sql);
+ while ($obj = $bind->fetch_object()) {
+ $baris = $obj;
+ }
+ return $baris;
+}
+public function update_data_mata_kuliah($mk_id, $nama)
+{
+ $sql = "UPDATE tbl_mk SET nim='$nim', nama='$nama_mk'
+WHERE nim='$nim'";
+ $this->conn->query($sql);
+} 
+public function delete_data_mata_kuliah($nim)
+{
+ $sql = "DELETE FROM tbl_mk WHERE nim='$nim'";
+ $this->conn->query($sql);
+}
 }
